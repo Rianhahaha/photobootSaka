@@ -14,9 +14,9 @@ export default function MultipleImagePreview() {
   const frameList = [
     "/frame1.png",
     "/frame2.png",
+    "/frame3.png",
+    "/frame4.png",
   ]
-
-
 
   const startCamera = async () => {
     try {
@@ -62,9 +62,10 @@ export default function MultipleImagePreview() {
     if (!canvasElement) return;
 
     const canvas = await html2canvas(canvasElement, {
-      useCORS: true,
-      allowTaint: true,
-      scale: 5,
+  scale: 5,
+  useCORS: true,
+  // windowWidth: canvasElement.scrollWidth,
+  // windowHeight: canvasElement.scrollHeight,
     });
 
     const dataUrl = canvas.toDataURL("image/png");
@@ -87,7 +88,7 @@ export default function MultipleImagePreview() {
       />
 
       <div
-        className="relative w-fit bg-center bg-cover h-[600px]"
+        className="relative w-[200px] bg-center bg-cover h-[600px] overflow-hidden"
         id="canvas"
       >
         <Image
@@ -104,7 +105,9 @@ export default function MultipleImagePreview() {
             className={`absolute w-full -z-10 h-[141px] left-1/2 -translate-x-1/2 ${i === 0 ? "top-[70px]" : i === 1 ? "top-[211px]" : "top-[343px]"
               }`}
           >
-            <img
+            <Image
+              width={1000}
+              height={1000}
               src={src}
               alt={`preview-${i}`}
               className="size-full object-cover rounded"
