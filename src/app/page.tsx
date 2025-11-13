@@ -62,10 +62,10 @@ export default function MultipleImagePreview() {
     if (!canvasElement) return;
 
     const canvas = await html2canvas(canvasElement, {
-  scale: 5,
-  useCORS: true,
-  // windowWidth: canvasElement.scrollWidth,
-  // windowHeight: canvasElement.scrollHeight,
+      scale: 5,
+      useCORS: true,
+      // windowWidth: canvasElement.scrollWidth,
+      // windowHeight: canvasElement.scrollHeight,
     });
 
     const dataUrl = canvas.toDataURL("image/png");
@@ -92,11 +92,11 @@ export default function MultipleImagePreview() {
         id="canvas"
       >
         <Image
-          className="w-[200px] h-[600px]"
+          className="w-[200px] h-[600px] object-cover"
           src={frameList[useFrame]}
           alt="frame"
-          width={1000}
-          height={1000}
+          width={200}
+          height={600}
         />
 
         {previews.map((src, i) => (
