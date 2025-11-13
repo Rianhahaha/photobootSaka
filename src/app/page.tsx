@@ -92,7 +92,7 @@ export default function MultipleImagePreview() {
         id="canvas"
       >
         <Image
-          className="size-full object-cover"
+          className="w-[200px] h-[600px]"
           src={frameList[useFrame]}
           alt="frame"
           width={1000}
