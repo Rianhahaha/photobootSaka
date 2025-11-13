@@ -91,12 +91,10 @@ export default function MultipleImagePreview() {
         className="relative w-[200px] bg-center bg-cover h-[600px] overflow-hidden"
         id="canvas"
       >
-        <Image
+        <img
           className="w-[200px] h-[600px] object-cover"
           src={frameList[useFrame]}
           alt="frame"
-          width={200}
-          height={600}
         />
 
         {previews.map((src, i) => (
