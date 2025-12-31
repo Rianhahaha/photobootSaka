@@ -5,8 +5,7 @@ import html2canvas from "html2canvas";
 export default function MultipleImagePreview() {
   const [previews, setPreviews] = useState<string[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [streaming, setStreaming] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
 
   const [useFrame, setUseFrame] = useState(0);
 
@@ -14,27 +13,8 @@ export default function MultipleImagePreview() {
     "/frame1.png",
   ]
 
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play();
-        setStreaming(true);
-      }
-    } catch (err: any) {
-      console.error(err);
-      setError("Gagal mengakses kamera. Pastikan izin diberikan.");
-    }
-  };
 
-  const stopCamera = () => {
-    const stream = videoRef.current?.srcObject as MediaStream | null;
-    if (stream) {
-      stream.getTracks().forEach(track => track.stop());
-      setStreaming(false);
-    }
-  };
+
 
 
 
