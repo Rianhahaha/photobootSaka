@@ -53,33 +53,33 @@ export default function MultipleImagePreview() {
   };
 
   return (
-    <section className="p-4  flex flex-col items-center justify-center relative mx-auto max-w-5xl">
-<div className="w-full mb-4">
-  <label
-    className="flex flex-col items-center justify-center w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-indigo-50 hover:border-indigo-400 transition-all duration-300 group"
-  >
-    <div className="flex flex-col items-center justify-center pt-5 pb-6 group-hover:text-indigo-600">
-      {/* Ikon Awan Upload */}
-      <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-      
-      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
-        <span className="font-bold">Klik untuk upload</span> (Max 3 foto)
-      </p>
-      <p className="text-xs text-gray-400 dark:text-gray-400">
-        JPG, PNG, atau format lain, (CR2 nggak bisa ya)
-      </p>
-    </div>
-    
-    {/* Input aslinya disembunyikan di sini */}
-    <input
-      type="file"
-      accept="image/*,.cr2"
-      multiple
-      onChange={handleImageChange}
-      className="hidden"
-    />
-  </label>
-</div>
+    <section className="p-4  flex flex-col items-center justify-center relative">
+      <div className="w-full mb-4">
+        <label
+          className="flex flex-col items-center justify-center w-full h-36 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-indigo-50 hover:border-indigo-400 transition-all duration-300 group"
+        >
+          <div className="flex flex-col items-center justify-center pt-5 pb-6 group-hover:text-indigo-600">
+            {/* Ikon Awan Upload */}
+            <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+
+            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
+              <span className="font-bold">Klik untuk upload</span> (Max 3 foto)
+            </p>
+            <p className="text-xs text-gray-400 dark:text-gray-400">
+              JPG, PNG, atau format lain, (CR2 nggak bisa ya)
+            </p>
+          </div>
+
+          {/* Input aslinya disembunyikan di sini */}
+          <input
+            type="file"
+            accept="image/*,.cr2"
+            multiple
+            onChange={handleImageChange}
+            className="hidden"
+          />
+        </label>
+      </div>
 
       <div
         className="relative w-[200px] bg-center bg-cover h-[600px] overflow-hidden"
@@ -94,15 +94,13 @@ export default function MultipleImagePreview() {
         {previews.map((src, i) => (
           <div
             key={i}
-            className={`absolute w-full -z-10 h-[140px] left-1/2 -translate-x-1/2 ${i === 0 ? "top-[80px]" : i === 1 ? "top-[220px]" : "top-[343px]"
+            className={`absolute w-full object-cover h-[140px] left-1/2 -translate-x-1/2 ${i === 0 ? "top-[80px] z-[-10]" : i === 1 ? "top-[226px] z-[-8]" : "top-[343px] z-[-4]"
               }`}
           >
             <img
-              width={1000}
-              height={1000}
               src={src}
               alt={`preview-${i}`}
-              className="size-full object-cover rounded"
+              className="w-full object-cover object-center rounded"
             />
           </div>
         ))}
